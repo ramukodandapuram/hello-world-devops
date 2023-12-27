@@ -32,7 +32,7 @@ pipeline {
         }
         stage('Deploy') {
             agent {
-                kubernets {
+                kubernetes {
                     label 'jenkins'
                     defaultContainer 'jnlp'
                 }
