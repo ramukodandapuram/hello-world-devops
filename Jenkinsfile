@@ -31,8 +31,17 @@ pipeline {
 
         }
         stage('Deploy') {
+            agent {
+                kubernets {
+                    label 'jenkins'
+                    defaultContainer 'jnlp'
+                }
+            }
+            
             steps {
                 echo 'Deploying ..'
+                sh 'curl -LO "https://dl.k8s.io/release/v1.28.0/bin/linux/amd64/kubectl"'
+                sh 'chmod u+x ./kubectl'
                 sh 'kubectl apply -f deployment.yml'
                 sh 'kubectl apply -f service.yml'
             }
