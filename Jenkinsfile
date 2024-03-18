@@ -46,7 +46,7 @@ pipeline {
                 //sh 'chmod u+x ./kubectl'
                 //sh 'kubectl -- apply -f deployment.yml'
                 //sh 'kubectl -- apply -f service.yml'
-                kubernetesDeploy(configs: "deployment.yml", kubeconfigId: "mykubeconfig")
+                kubernetesDeploy(configs: "deployment.yml", kubeconfigId: "k8skubeconfig")
                
             }
        // }
