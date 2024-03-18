@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -15,6 +16,19 @@ spec:
       - name: flask-hello
         image: ramupy/flask-helloworld
   replicas: 2
+---
+apiVersion: v1
+kind: Service
+metadata: 
+  name: flask-hello-service
+spec:
+  type: NodePort
+  ports:
+    - port: 5000   #application port
+      targetPort: 5000 #target port
+      nodePort: 30008
+  selector:
+    app: flask-hello
         
 
       
