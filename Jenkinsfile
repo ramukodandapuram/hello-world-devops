@@ -1,10 +1,6 @@
 pipeline {
-   //agent any
-   agent {
-      kubernetes {
-         label 'my-kubernetes-agent'
-      }
-   }
+   agent any
+   
    environment {
         DOCKER_HUB_REPO = "ramupy/flask-helloworld"
         CONTAINER_NAME = "flask-helloworld"
@@ -44,13 +40,13 @@ pipeline {
             //}
             
             steps {
-               kubernetes {
+              
                 echo 'Deploying ..'
                 //sh 'curl -LO "https://dl.k8s.io/release/v1.28.0/bin/linux/amd64/kubectl"'
                 //sh 'chmod u+x ./kubectl'
                 sh 'kubectl -- apply -f deployment.yml'
                 sh 'kubectl -- apply -f service.yml'
-               }
+               
             }
        // }
 
