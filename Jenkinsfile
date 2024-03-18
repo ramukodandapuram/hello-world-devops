@@ -32,7 +32,7 @@ pipeline {
         }
         stage('Deploy') {
            // agent {
-                kubernetes {
+                //kubernetes {
                   //  label 'jenkins'
                   //  defaultContainer 'jnlp'
                 //}
@@ -45,7 +45,7 @@ pipeline {
                 sh 'kubectl -- apply -f deployment.yml -n jenkins'
                 sh 'kubectl -- apply -f service.yml -n jenkins'
             }
-        }
+       // }
 
 
    }
