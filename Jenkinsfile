@@ -43,10 +43,8 @@ pipeline {
             steps {
               
                 echo 'Deploying ..'
-                //sh 'curl -LO "https://dl.k8s.io/release/v1.28.0/bin/linux/amd64/kubectl"'
-                //sh 'chmod u+x ./kubectl'
-                sh 'kubectl get nodes'
-                sh 'kubectl get svc -o wide'
+                sh 'curl -LO "https://dl.k8s.io/release/v1.28.0/bin/linux/amd64/kubectl"'
+                sh 'chmod u+x ./kubectl'
                 sh 'kubectl -- apply -f deployment.yml -n jenkins'
                 sh 'kubectl -- apply -f service.yml -n jenkins'
                 //kubernetesDeploy(configs: "deployment.yml", kubeconfigId: "k8skubeconfig")
